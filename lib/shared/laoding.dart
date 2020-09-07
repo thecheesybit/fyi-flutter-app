@@ -7,13 +7,13 @@ class Loading extends StatelessWidget {
     return Container(
       // constraints: BoxConstraints.expand(),
       //         decoration: BoxDecoration(
-      //           image: DecorationImage(
-      //               image: AssetImage("assets/images/b3.gif"),
-      //               fit: BoxFit.cover),
+      //           // image: DecorationImage(
+      //           //     image: AssetImage("assets/images/b3.gif"),
+      //           //     fit: BoxFit.cover),
       //         ),
-      //color: Colors.brown[100],
+      color: Colors.white,
       child: Center(
-        child: SpinKitChasingDots(
+        child: SpinKitWave(
           color: Colors.pink[400],
           size: 50.0,
         ),
