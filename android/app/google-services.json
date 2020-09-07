@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "655400679177",
+    "firebase_url": "https://hello-dummy-4cde8.firebaseio.com",
+    "project_id": "hello-dummy-4cde8",
+    "storage_bucket": "hello-dummy-4cde8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655400679177:android:e4955f2fd0205498bd85d8",
+        "android_client_info": {
+          "package_name": "com.militantace.hello.dummy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655400679177-8l3169kp7d22pr0f77bsfd4dojcbtkep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIUB5MyVmj3Bdwlzwepo-h2vk1GH50M8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655400679177-8l3169kp7d22pr0f77bsfd4dojcbtkep.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
