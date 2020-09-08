@@ -1,6 +1,6 @@
 # hello_dummy
 
-A new Flutter project.
+A new FYI FLUTTER APP 
 
 ## Getting Started
 
