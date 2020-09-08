@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:FYI/auth/authPackage.dart';
+import 'package:fyi/auth/authPackage.dart';
 
 class HomePage extends StatefulWidget {
   @override

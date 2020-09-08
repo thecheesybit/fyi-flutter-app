@@ -1,12 +1,12 @@
 ![fyi](https://github.com/thecheesybit/fyi-flutter-app/blob/master/assets/images/Screenshot_20200908-164130.jpg)
 
-# FYI
+# fyi
 
-A New App for FYI
+A New App for fyi
 
 ## What you will create
 
-We’re going to make a FYI app, it will allow sutdents of VITCC access to FYI content. 
+We’re going to make a fyi app, it will allow sutdents of VITCC access to fyi content. 
 
 
 A few resources to get you started if this is your first Flutter project:

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:FYI/auth/authState.dart';
+import 'package:fyi/auth/authState.dart';
 import 'package:provider/provider.dart';
-import 'package:FYI/modals/user.dart';
-import 'package:FYI/screens/home/homePage.dart';
+import 'package:fyi/modals/user.dart';
+import 'package:fyi/screens/home/homePage.dart';
 
 class Wrapper extends StatelessWidget {
   @override
