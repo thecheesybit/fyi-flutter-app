@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hello_dummy/screens/pre/login.dart';
-import 'package:hello_dummy/screens/pre/register.dart';
+import 'package:FYI/screens/pre/login.dart';
+import 'package:FYI/screens/pre/register.dart';
 
 class Authenticate extends StatefulWidget {
   @override
@@ -13,7 +13,6 @@ class _AuthenticateState extends State<Authenticate> {
     //print(showSignIn.toString());
     setState(() => showSignIn = !showSignIn);
   }
-
 
   @override
   Widget build(BuildContext context) {

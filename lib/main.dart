@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hello_dummy/auth/wrapper.dart';
+import 'package:FYI/auth/wrapper.dart';
 import 'package:provider/provider.dart';
-import 'package:hello_dummy/modals/user.dart';
-import 'package:hello_dummy/auth/authPackage.dart';
+import 'package:FYI/modals/user.dart';
+import 'package:FYI/auth/authPackage.dart';
 
 void main() {
   runApp(MyApp());

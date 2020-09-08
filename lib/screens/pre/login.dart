@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hello_dummy/auth/authPackage.dart';
-import 'package:hello_dummy/shared/laoding.dart';
-import 'package:hello_dummy/shared/funtions.dart';
+import 'package:FYI/auth/authPackage.dart';
+import 'package:FYI/shared/laoding.dart';
+import 'package:FYI/shared/funtions.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;

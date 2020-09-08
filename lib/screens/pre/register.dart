@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hello_dummy/shared/funtions.dart';
-import 'package:hello_dummy/shared/laoding.dart';
-import 'package:hello_dummy/auth/authPackage.dart';
-
+import 'package:FYI/shared/funtions.dart';
+import 'package:FYI/shared/laoding.dart';
+import 'package:FYI/auth/authPackage.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -51,15 +50,15 @@ class _RegisterState extends State<Register> {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
                         child: Container(
-                         // child: Image.asset("assets/images/logo.png"),
-                        ),
+                            // child: Image.asset("assets/images/logo.png"),
+                            ),
                       ),
                     ),
-                  ), 
+                  ),
                   SizedBox(
-              height: 10,
-            ),
-            Text('WELCOME TO CRYPT'),
+                    height: 10,
+                  ),
+                  Text('WELCOME TO CRYPT'),
                   Container(
                     padding:
                         EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0),
@@ -116,12 +115,12 @@ class _RegisterState extends State<Register> {
                             style: TextStyle(color: Colors.red, fontSize: 14.0),
                           ),
                           FlatButton(
-                             child: Text('Already a User ? Sign In'),
-                             //elevation: 0,
-                             color: Colors.transparent,
-                             onPressed: () => widget.toggleView(),),
+                            child: Text('Already a User ? Sign In'),
+                            //elevation: 0,
+                            color: Colors.transparent,
+                            onPressed: () => widget.toggleView(),
+                          ),
                         ],
-                      
                       ),
                     ),
                   ),
