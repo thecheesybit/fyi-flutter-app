@@ -34,11 +34,16 @@ class _SignInState extends State<SignIn> {
                 '',
                 style: TextStyle(color: Colors.black),
               ),
-              
             ),
             extendBodyBehindAppBar: true,
             body: Container(
               constraints: BoxConstraints.expand(),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [Color(0xffc21500), Color(0xffffc500)]),
+              ),
               // decoration: BoxDecoration(
               //   image: DecorationImage(
               //       image: AssetImage("assets/images/b3.gif"),
@@ -46,21 +51,21 @@ class _SignInState extends State<SignIn> {
               // ),
               child: Column(
                 children: <Widget>[
-                  
                   Center(
                     child: SafeArea(
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0,35,0,0),
+                        padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
                         child: Container(
-                          //child: 
-                          //Image.asset("assets/images/logo.png"),
-                        ),
+                            //child:
+                            //Image.asset("assets/images/logo.png"),
+                            ),
                       ),
                     ),
-                  ), SizedBox(
-              height: 10,
-            ),
-            Text('WELCOME TO CRYPT'),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text('WELCOME TO CRYPT'),
                   Container(
                     padding:
                         EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0),
@@ -118,10 +123,11 @@ class _SignInState extends State<SignIn> {
                             error,
                             style: TextStyle(color: Colors.red, fontSize: 14.0),
                           ),
-                           FlatButton(
-                             child: Text('Not Registered Yet! Sign Up'),
-                             color: Colors.transparent,
-                             onPressed: () => widget.toggleView(),),
+                          FlatButton(
+                            child: Text('Not Registered Yet! Sign Up'),
+                            color: Colors.transparent,
+                            onPressed: () => widget.toggleView(),
+                          ),
                         ],
                       ),
                     ),
