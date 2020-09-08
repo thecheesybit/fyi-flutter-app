@@ -58,7 +58,7 @@ class _RegisterState extends State<Register> {
                   SizedBox(
                     height: 10,
                   ),
-                  Text('WELCOME TO CRYPT'),
+                  Text('WELCOME TO FYI'),
                   Container(
                     padding:
                         EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0),
