@@ -6,7 +6,7 @@ A New App for FYI
 
 ## What you will create
 
-We’re going to make a FYI app, it will sutdents of VITCC access to FYI content. 
+We’re going to make a FYI app, it will allow sutdents of VITCC access to FYI content. 
 
 
 A few resources to get you started if this is your first Flutter project:
