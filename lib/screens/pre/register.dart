@@ -37,17 +37,17 @@ class _RegisterState extends State<Register> {
             ),
             extendBodyBehindAppBar: true,
             body: SingleChildScrollView(
-                          child: Column(
+              child: Column(
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [Color(0xff7874FD), Color(0xffB225EE)]),
-                          ),
+                    height: MediaQuery.of(context).size.height,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xff7874FD), Color(0xffB225EE)]),
+                    ),
                     child: Column(
                       children: <Widget>[
                         Center(
@@ -55,8 +55,15 @@ class _RegisterState extends State<Register> {
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
                               child: Container(
-                                  // child: Image.asset("assets/images/logo.png"),
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(28, 0, 0, 0),
+                                  child: Image.asset(
+                                    "assets/images/dummy.png",
+                                    width: 200,
                                   ),
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -65,16 +72,16 @@ class _RegisterState extends State<Register> {
                         ),
                         Text('WELCOME TO FYI'),
                         Container(
-                          padding:
-                              EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 50.0, horizontal: 50.0),
                           child: Form(
                             key: _formKey,
                             child: Column(
                               children: <Widget>[
                                 //SizedBox(height: 10.0),
                                 TextFormField(
-                                  decoration:
-                                      textInputDecoration.copyWith(hintText: 'email'),
+                                  decoration: textInputDecoration.copyWith(
+                                      hintText: 'email'),
                                   validator: (val) =>
                                       val.isEmpty ? 'Enter an email' : null,
                                   onChanged: (val) {
@@ -100,17 +107,21 @@ class _RegisterState extends State<Register> {
                                       'Register',
                                       style: TextStyle(color: Colors.white),
                                     ),
-                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                    elevation: 5.0,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
                                     onPressed: () async {
                                       if (_formKey.currentState.validate()) {
                                         setState(() => loading = true);
-                                        dynamic result =
-                                            await _auth.registerWithEmailAndPassword(
+                                        dynamic result = await _auth
+                                            .registerWithEmailAndPassword(
                                                 email, password);
                                         if (result == null) {
                                           setState(() {
                                             loading = false;
-                                            error = 'Please supply a valid email';
+                                            error =
+                                                'Please supply a valid email';
                                           });
                                         }
                                       }
@@ -118,7 +129,8 @@ class _RegisterState extends State<Register> {
                                 SizedBox(height: 12.0),
                                 Text(
                                   error,
-                                  style: TextStyle(color: Colors.red, fontSize: 14.0),
+                                  style: TextStyle(
+                                      color: Colors.red, fontSize: 14.0),
                                 ),
                                 FlatButton(
                                   child: Text('Already a User ? Sign In'),

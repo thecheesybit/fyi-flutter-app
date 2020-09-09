@@ -28,7 +28,7 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
-
+    
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -44,6 +44,7 @@ android {
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        
     }
 
     buildTypes {
@@ -53,6 +54,7 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    
 }
 
 flutter {
@@ -62,3 +64,4 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+

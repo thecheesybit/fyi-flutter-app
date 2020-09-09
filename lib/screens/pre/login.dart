@@ -5,7 +5,6 @@ import 'package:fyi/shared/funtions.dart';
 
 const double sizedBoxHeight = 10;
 
-
 class SignIn extends StatefulWidget {
   final Function toggleView;
   SignIn({this.toggleView});
@@ -23,7 +22,6 @@ class _SignInState extends State<SignIn> {
   // text field state
   String email = '';
   String password = '';
-  
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +43,7 @@ class _SignInState extends State<SignIn> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
+                    height: 990,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                           begin: Alignment.topCenter,
@@ -59,9 +57,15 @@ class _SignInState extends State<SignIn> {
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
                               child: Container(
-                                  //child:
-                                  //Image.asset("assets/images/logo.png"),
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(28, 0, 0, 0),
+                                  child: Image.asset(
+                                    "assets/images/dummy.png",
+                                    width: 200,
                                   ),
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -86,7 +90,7 @@ class _SignInState extends State<SignIn> {
                                     setState(() => email = val);
                                   },
                                 ),
-                                SizedBox(height: sizedBoxHeight*2),
+                                SizedBox(height: sizedBoxHeight * 2),
                                 TextFormField(
                                   obscureText: true,
                                   decoration: textInputDecoration.copyWith(
@@ -98,14 +102,16 @@ class _SignInState extends State<SignIn> {
                                     setState(() => password = val);
                                   },
                                 ),
-                                SizedBox(height: sizedBoxHeight*2),
+                                SizedBox(height: sizedBoxHeight * 2),
                                 RaisedButton(
                                     color: Colors.pink[400],
                                     child: Text(
                                       'Sign In',
                                       style: TextStyle(color: Colors.white),
                                     ),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
                                     elevation: 5.0,
                                     onPressed: () async {
                                       if (_formKey.currentState.validate()) {
@@ -122,7 +128,7 @@ class _SignInState extends State<SignIn> {
                                         }
                                       }
                                     }),
-                                SizedBox(height: sizedBoxHeight*1.2),
+                                SizedBox(height: sizedBoxHeight * 1.2),
                                 Text(
                                   error,
                                   style: TextStyle(
