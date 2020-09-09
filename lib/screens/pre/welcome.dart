@@ -88,6 +88,7 @@ class WelcomePage extends StatelessWidget {
                         onPressed: () {
                           //pusing using pageroute context
                           //hera animation time controller methode implemenation
+                          //ezpz
 
                           Navigator.push(
                             context,
