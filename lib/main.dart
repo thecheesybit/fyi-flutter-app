@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fyi/auth/wrapper.dart';
+// import 'package:fyi/auth/wrapper.dart';
+import 'package:fyi/screens/pre/welcome.dart';
 import 'package:provider/provider.dart';
 import 'package:fyi/modals/user.dart';
 import 'package:fyi/auth/authPackage.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
       value: AuthService().user,
       child: MaterialApp(
-        home: Wrapper(),
+        home: WelcomePage(),
         debugShowCheckedModeBanner: false,
       ),
     );

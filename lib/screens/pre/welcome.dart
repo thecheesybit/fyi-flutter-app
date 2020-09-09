@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fyi/auth/authState.dart';
-// import 'package:fyi/screens/pre/login.dart';
-// import 'package:fyi/screens/pre/register.dart';
+import 'package:fyi/auth/wrapper.dart';
+
 
 
 const double sizedBoxHeight = 10;
@@ -66,7 +65,7 @@ class WelcomePage extends StatelessWidget {
                       context,
                       PageRouteBuilder(
                       transitionDuration: Duration(milliseconds: 1500),
-                      pageBuilder: (_, __, ___) => Authenticate()),
+                      pageBuilder: (_, __, ___) => Wrapper()),
                     );
                   }),
                 ],

@@ -34,6 +34,7 @@ class _RegisterState extends State<Register> {
                 '',
                 style: TextStyle(color: Colors.black),
               ),
+              leading: Icon(null),
             ),
             extendBodyBehindAppBar: true,
             body: SingleChildScrollView(

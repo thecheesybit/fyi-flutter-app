@@ -36,6 +36,7 @@ class _SignInState extends State<SignIn> {
                 '',
                 style: TextStyle(color: Colors.black),
               ),
+              leading: Icon(null),
             ),
             extendBodyBehindAppBar: true,
             body: SingleChildScrollView(
