@@ -4,12 +4,12 @@ import 'package:fyi/auth/wrapper.dart';
 //constant files used in this page
 
 const double sizedBoxHeight = 10;
-const String title = 'Welcome to FYI';
+const String title = '';
 const String button = 'Lets Get Started';
 const int animationDuration = 2000;
 const int _color1 = 0xff7874FD;
 const int _color2 = 0xffB225EE;
-const String _logo = "assets/images/dummy.png";
+const String _logo = "assets/images/logo.png";
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -47,10 +47,10 @@ class WelcomePage extends StatelessWidget {
 
                     child: SafeArea(
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
                         child: Container(
                           child: Padding(
-                            padding: const EdgeInsets.fromLTRB(28, 0, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
 
                             //hero animation used on the logo part
 
@@ -58,16 +58,13 @@ class WelcomePage extends StatelessWidget {
                               tag: "logo",
                               child: Image.asset(
                                 _logo,
-                                width: 250,
+                                width: 350,
                               ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: sizedBoxHeight,
                   ),
                   Text(title),
                   SizedBox(

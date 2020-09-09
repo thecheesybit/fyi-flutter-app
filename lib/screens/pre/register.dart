@@ -8,9 +8,11 @@ import 'package:fyi/auth/authPackage.dart';
 const double sizedBoxHeight = 10;
 const int _color1 = 0xff7874FD;
 const int _color2 = 0xffB225EE;
-const String _logo = "assets/images/dummy.png";
-const String _firstText = "Welcome To FYI";
+const String _logo = "assets/images/logo.png";
+const String _firstText = "Register";
 const String _lastText = 'Already a User? Sign In';
+const String _fb = "assets/images/fb.png";
+const String _google = "assets/images/google.png";
 
 // toggle view
 class Register extends StatefulWidget {
@@ -74,7 +76,7 @@ class _RegisterState extends State<Register> {
                               child: Container(
                                 child: Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(28, 0, 0, 0),
+                                      const EdgeInsets.fromLTRB(0, 0, 0, 0),
 
                                   // hero animation in progress
 
@@ -82,7 +84,7 @@ class _RegisterState extends State<Register> {
                                     tag: "logo",
                                     child: Image.asset(
                                       _logo,
-                                      width: 200,
+                                      width: 250,
                                     ),
                                   ),
                                 ),
@@ -93,7 +95,10 @@ class _RegisterState extends State<Register> {
                         SizedBox(
                           height: sizedBoxHeight,
                         ),
-                        Text(_firstText),
+                        Text(
+                          _firstText,
+                          style: TextStyle(fontFamily: 'font2', fontSize: 45),
+                        ),
                         Container(
                           padding: EdgeInsets.symmetric(
                               vertical: 50.0, horizontal: 50.0),
@@ -150,17 +155,62 @@ class _RegisterState extends State<Register> {
                                         }
                                       }
                                     }),
-                                SizedBox(height: sizedBoxHeight * 1.2),
+                                SizedBox(height: sizedBoxHeight * 1),
                                 Text(
                                   error,
                                   style: TextStyle(
                                       color: Colors.red, fontSize: 14.0),
                                 ),
                                 FlatButton(
-                                  child: Text(_lastText),
+                                  child: Text(
+                                    _lastText,
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 16),
+                                  ),
                                   //elevation: 0,
                                   color: Colors.transparent,
                                   onPressed: () => widget.toggleView(),
+                                ),
+                                Row(children: <Widget>[
+                                  Expanded(
+                                      child: Divider(
+                                    thickness: 1,
+                                    color: Colors.white,
+                                    indent: 50,
+                                    endIndent: 10,
+                                  )),
+                                  Text(
+                                    "OR",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Expanded(
+                                      child: Divider(
+                                    thickness: 1,
+                                    color: Colors.white,
+                                    indent: 10,
+                                    endIndent: 50,
+                                  )),
+                                ]),
+                                SizedBox(
+                                  height: sizedBoxHeight * 1.2,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      width: 45,
+                                      child: Image.asset(_google),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    SizedBox(
+                                      width: 45,
+                                      child: Image.asset(_fb),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
