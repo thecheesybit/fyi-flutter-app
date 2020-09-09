@@ -36,92 +36,101 @@ class _RegisterState extends State<Register> {
               ),
             ),
             extendBodyBehindAppBar: true,
-            body: Container(
-              constraints: BoxConstraints.expand(),
-              // decoration: BoxDecoration(
-              //   image: DecorationImage(
-              //       image: AssetImage("assets/images/b3.gif"),
-              //       fit: BoxFit.cover),
-              // ),
-              child: Column(
-                children: <Widget>[
-                  Center(
-                    child: SafeArea(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
-                        child: Container(
-                            // child: Image.asset("assets/images/logo.png"),
-                            ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text('WELCOME TO FYI'),
+            body: SingleChildScrollView(
+                          child: Column(
+                children: [
                   Container(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0),
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        children: <Widget>[
-                          //SizedBox(height: 10.0),
-                          TextFormField(
-                            decoration:
-                                textInputDecoration.copyWith(hintText: 'email'),
-                            validator: (val) =>
-                                val.isEmpty ? 'Enter an email' : null,
-                            onChanged: (val) {
-                              setState(() => email = val);
-                            },
+                    width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [Color(0xff7874FD), Color(0xffB225EE)]),
                           ),
-                          SizedBox(height: 20.0),
-                          TextFormField(
-                            decoration: textInputDecoration.copyWith(
-                                hintText: 'password'),
-                            obscureText: true,
-                            validator: (val) => val.length < 6
-                                ? 'Enter a password 6+ chars long'
-                                : null,
-                            onChanged: (val) {
-                              setState(() => password = val);
-                            },
+                    child: Column(
+                      children: <Widget>[
+                        Center(
+                          child: SafeArea(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
+                              child: Container(
+                                  // child: Image.asset("assets/images/logo.png"),
+                                  ),
+                            ),
                           ),
-                          SizedBox(height: 20.0),
-                          RaisedButton(
-                              color: Colors.pink[400],
-                              child: Text(
-                                'Register',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              onPressed: () async {
-                                if (_formKey.currentState.validate()) {
-                                  setState(() => loading = true);
-                                  dynamic result =
-                                      await _auth.registerWithEmailAndPassword(
-                                          email, password);
-                                  if (result == null) {
-                                    setState(() {
-                                      loading = false;
-                                      error = 'Please supply a valid email';
-                                    });
-                                  }
-                                }
-                              }),
-                          SizedBox(height: 12.0),
-                          Text(
-                            error,
-                            style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text('WELCOME TO FYI'),
+                        Container(
+                          padding:
+                              EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0),
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              children: <Widget>[
+                                //SizedBox(height: 10.0),
+                                TextFormField(
+                                  decoration:
+                                      textInputDecoration.copyWith(hintText: 'email'),
+                                  validator: (val) =>
+                                      val.isEmpty ? 'Enter an email' : null,
+                                  onChanged: (val) {
+                                    setState(() => email = val);
+                                  },
+                                ),
+                                SizedBox(height: 20.0),
+                                TextFormField(
+                                  decoration: textInputDecoration.copyWith(
+                                      hintText: 'password'),
+                                  obscureText: true,
+                                  validator: (val) => val.length < 6
+                                      ? 'Enter a password 6+ chars long'
+                                      : null,
+                                  onChanged: (val) {
+                                    setState(() => password = val);
+                                  },
+                                ),
+                                SizedBox(height: 20.0),
+                                RaisedButton(
+                                    color: Colors.pink[400],
+                                    child: Text(
+                                      'Register',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                    onPressed: () async {
+                                      if (_formKey.currentState.validate()) {
+                                        setState(() => loading = true);
+                                        dynamic result =
+                                            await _auth.registerWithEmailAndPassword(
+                                                email, password);
+                                        if (result == null) {
+                                          setState(() {
+                                            loading = false;
+                                            error = 'Please supply a valid email';
+                                          });
+                                        }
+                                      }
+                                    }),
+                                SizedBox(height: 12.0),
+                                Text(
+                                  error,
+                                  style: TextStyle(color: Colors.red, fontSize: 14.0),
+                                ),
+                                FlatButton(
+                                  child: Text('Already a User ? Sign In'),
+                                  //elevation: 0,
+                                  color: Colors.transparent,
+                                  onPressed: () => widget.toggleView(),
+                                ),
+                              ],
+                            ),
                           ),
-                          FlatButton(
-                            child: Text('Already a User ? Sign In'),
-                            //elevation: 0,
-                            color: Colors.transparent,
-                            onPressed: () => widget.toggleView(),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

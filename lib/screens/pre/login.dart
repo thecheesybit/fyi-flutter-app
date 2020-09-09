@@ -3,6 +3,9 @@ import 'package:fyi/auth/authPackage.dart';
 import 'package:fyi/shared/laoding.dart';
 import 'package:fyi/shared/funtions.dart';
 
+const double sizedBoxHeight = 10;
+
+
 class SignIn extends StatefulWidget {
   final Function toggleView;
   SignIn({this.toggleView});
@@ -20,6 +23,7 @@ class _SignInState extends State<SignIn> {
   // text field state
   String email = '';
   String password = '';
+  
 
   @override
   Widget build(BuildContext context) {
@@ -36,100 +40,104 @@ class _SignInState extends State<SignIn> {
               ),
             ),
             extendBodyBehindAppBar: true,
-            body: Container(
-              constraints: BoxConstraints.expand(),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: [Color(0xffc21500), Color(0xffffc500)]),
-              ),
-              // decoration: BoxDecoration(
-              //   image: DecorationImage(
-              //       image: AssetImage("assets/images/b3.gif"),
-              //       fit: BoxFit.cover),
-              // ),
+            body: SingleChildScrollView(
               child: Column(
-                children: <Widget>[
-                  Center(
-                    child: SafeArea(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
-                        child: Container(
-                            //child:
-                            //Image.asset("assets/images/logo.png"),
-                            ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text('WELCOME TO FYI'),
+                children: [
                   Container(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0),
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        children: <Widget>[
-                          //SizedBox(height: 10.0),
-                          TextFormField(
-                            decoration:
-                                textInputDecoration.copyWith(hintText: 'email'),
-                            validator: (val) =>
-                                val.isEmpty ? 'Enter an email' : null,
-                            onChanged: (val) {
-                              setState(() => email = val);
-                            },
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xff7874FD), Color(0xffB225EE)]),
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Center(
+                          child: SafeArea(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
+                              child: Container(
+                                  //child:
+                                  //Image.asset("assets/images/logo.png"),
+                                  ),
+                            ),
                           ),
-                          SizedBox(height: 20.0),
-                          TextFormField(
-                            obscureText: true,
-                            decoration: textInputDecoration.copyWith(
-                                hintText: 'password'),
-                            validator: (val) => val.length < 6
-                                ? 'Enter a password 6+ chars long'
-                                : null,
-                            onChanged: (val) {
-                              setState(() => password = val);
-                            },
+                        ),
+                        SizedBox(
+                          height: sizedBoxHeight,
+                        ),
+                        Text('WELCOME TO FYI'),
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 50.0, horizontal: 50.0),
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              children: <Widget>[
+                                //SizedBox(height: 10.0),
+                                TextFormField(
+                                  decoration: textInputDecoration.copyWith(
+                                      hintText: 'email'),
+                                  validator: (val) =>
+                                      val.isEmpty ? 'Enter an email' : null,
+                                  onChanged: (val) {
+                                    setState(() => email = val);
+                                  },
+                                ),
+                                SizedBox(height: sizedBoxHeight*2),
+                                TextFormField(
+                                  obscureText: true,
+                                  decoration: textInputDecoration.copyWith(
+                                      hintText: 'password'),
+                                  validator: (val) => val.length < 6
+                                      ? 'Enter a password 6+ chars long'
+                                      : null,
+                                  onChanged: (val) {
+                                    setState(() => password = val);
+                                  },
+                                ),
+                                SizedBox(height: sizedBoxHeight*2),
+                                RaisedButton(
+                                    color: Colors.pink[400],
+                                    child: Text(
+                                      'Sign In',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                    elevation: 5.0,
+                                    onPressed: () async {
+                                      if (_formKey.currentState.validate()) {
+                                        setState(() => loading = true);
+                                        dynamic result = await _auth
+                                            .signInWithEmailAndPassword(
+                                                email, password);
+                                        if (result == null) {
+                                          setState(() {
+                                            loading = false;
+                                            error =
+                                                'Could not sign in with those credentials';
+                                          });
+                                        }
+                                      }
+                                    }),
+                                SizedBox(height: sizedBoxHeight*1.2),
+                                Text(
+                                  error,
+                                  style: TextStyle(
+                                      color: Colors.red, fontSize: 14.0),
+                                ),
+                                FlatButton(
+                                  child: Text('Not Registered Yet! Sign Up'),
+                                  color: Colors.transparent,
+                                  onPressed: () => widget.toggleView(),
+                                ),
+                              ],
+                            ),
                           ),
-                          SizedBox(height: 20.0),
-                          RaisedButton(
-                              color: Colors.pink[400],
-                              child: Text(
-                                'Sign In',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              elevation: 5.0,
-                              onPressed: () async {
-                                if (_formKey.currentState.validate()) {
-                                  setState(() => loading = true);
-                                  dynamic result =
-                                      await _auth.signInWithEmailAndPassword(
-                                          email, password);
-                                  if (result == null) {
-                                    setState(() {
-                                      loading = false;
-                                      error =
-                                          'Could not sign in with those credentials';
-                                    });
-                                  }
-                                }
-                              }),
-                          SizedBox(height: 12.0),
-                          Text(
-                            error,
-                            style: TextStyle(color: Colors.red, fontSize: 14.0),
-                          ),
-                          FlatButton(
-                            child: Text('Not Registered Yet! Sign Up'),
-                            color: Colors.transparent,
-                            onPressed: () => widget.toggleView(),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
