@@ -15,9 +15,6 @@ class Loading extends StatelessWidget {
             end: Alignment.bottomCenter,
             colors: [Color(_color1), Color(_color2)]),
       ),
-      // image: DecorationImage(
-      //     image: AssetImage("assets/images/b3.gif"),
-      //     fit: BoxFit.cover),
       child: Center(
         child: SpinKitWave(
           color: Colors.pink[400],

@@ -6,7 +6,7 @@ import 'package:fyi/auth/wrapper.dart';
 const double sizedBoxHeight = 10;
 const String title = 'Welcome to FYI';
 const String button = 'Lets Get Started';
-const int animationDuration = 1500;
+const int animationDuration = 2000;
 const int _color1 = 0xff7874FD;
 const int _color2 = 0xffB225EE;
 const String _logo = "assets/images/dummy.png";
@@ -71,22 +71,47 @@ class WelcomePage extends StatelessWidget {
                   ),
                   Text(title),
                   SizedBox(
-                    height: sizedBoxHeight * 20,
+                    height: sizedBoxHeight * 30,
                   ),
-                  RaisedButton(
-                      child: Text(button),
-                      onPressed: () {
-                        //pusing using pageroute context
-                        //hera animation time controller methode implemenation
+                  SizedBox(
+                    height: 40,
+                    width: 150,
+                    child: RaisedButton(
+                        color: Colors.pink[400],
+                        elevation: 5.0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Text(
+                          button,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {
+                          //pusing using pageroute context
+                          //hera animation time controller methode implemenation
 
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
                               transitionDuration:
                                   Duration(milliseconds: animationDuration),
-                              pageBuilder: (_, __, ___) => Wrapper()),
-                        );
-                      }),
+                              pageBuilder: (_, __, ___) => Wrapper(),
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
+                                var begin = Offset(0.0, 1.0);
+                                var end = Offset.zero;
+                                var curve = Curves.ease;
+                                var tween = Tween(begin: begin, end: end)
+                                    .chain(CurveTween(curve: curve));
+
+                                return SlideTransition(
+                                  position: animation.drive(tween),
+                                  child: child,
+                                );
+                              },
+                            ),
+                          );
+                        }),
+                  ),
                 ],
               ),
             ),
