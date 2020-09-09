@@ -58,9 +58,12 @@ class _RegisterState extends State<Register> {
                                 child: Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(28, 0, 0, 0),
-                                  child: Image.asset(
-                                    "assets/images/dummy.png",
-                                    width: 200,
+                                  child: Hero(
+                                    tag: "logo",
+                                    child: Image.asset(
+                                      "assets/images/dummy.png",
+                                      width: 200,
+                                    ),
                                   ),
                                 ),
                               ),
