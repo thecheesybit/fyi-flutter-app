@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fyi/auth/wrapper.dart';
 
-
+//constant files used in this page
 
 const double sizedBoxHeight = 10;
+const String title = 'Welcome to FYI';
+const String button = 'Lets Get Started';
+const int animationDuration = 1500;
+const int _color1 = 0xff7874FD;
+const int _color2 = 0xffB225EE;
+const String _logo = "assets/images/dummy.png";
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -12,37 +18,46 @@ class WelcomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        title: Text(
-          '',
-          style: TextStyle(color: Colors.black),
-        ),
       ),
       extendBodyBehindAppBar: true,
+
+      // providing sinle scroll view to body
+
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
+              // specifying the size constrains to page\
+              // 990 is max for latest devices
+
               width: MediaQuery.of(context).size.width,
               height: 990,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Color(0xff7874FD), Color(0xffB225EE)]),
+                    begin: Alignment.topCenter, end: Alignment.bottomCenter,
+
+                    //hex color implementation
+
+                    colors: [Color(_color1), Color(_color2)]),
               ),
               child: Column(
                 children: <Widget>[
                   Center(
+                    //safe area implementation and silver app bar can also be used
+
                     child: SafeArea(
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
                         child: Container(
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(28, 0, 0, 0),
+
+                            //hero animation used on the logo part
+
                             child: Hero(
                               tag: "logo",
                               child: Image.asset(
-                                "assets/images/dummy.png",
+                                _logo,
                                 width: 250,
                               ),
                             ),
@@ -54,20 +69,24 @@ class WelcomePage extends StatelessWidget {
                   SizedBox(
                     height: sizedBoxHeight,
                   ),
-                  Text('WELCOME TO FYI'),
+                  Text(title),
                   SizedBox(
-                    height: sizedBoxHeight*20,
+                    height: sizedBoxHeight * 20,
                   ),
                   RaisedButton(
-                    child: Text("Lets get started"),
-                    onPressed: () {
-                    Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                      transitionDuration: Duration(milliseconds: 1500),
-                      pageBuilder: (_, __, ___) => Wrapper()),
-                    );
-                  }),
+                      child: Text(button),
+                      onPressed: () {
+                        //pusing using pageroute context
+                        //hera animation time controller methode implemenation
+
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                              transitionDuration:
+                                  Duration(milliseconds: animationDuration),
+                              pageBuilder: (_, __, ___) => Wrapper()),
+                        );
+                      }),
                 ],
               ),
             ),
@@ -78,24 +97,4 @@ class WelcomePage extends StatelessWidget {
   }
 }
 
-// class Authenticate extends StatefulWidget {
-//   @override
-//   _AuthenticateState createState() => _AuthenticateState();
-// }
-
-// class _AuthenticateState extends State<Authenticate> {
-//   bool showSignIn = true;
-//   void toggleView() {
-//     //print(showSignIn.toString());
-//     setState(() => showSignIn = !showSignIn);
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     if (showSignIn) {
-//       return SignIn(toggleView: toggleView);
-//     } else {
-//       return Register(toggleView: toggleView);
-//     }
-//   }
-// }
+// redirects you to Wrapper

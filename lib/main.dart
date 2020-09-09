@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:fyi/auth/wrapper.dart';
 import 'package:fyi/screens/pre/welcome.dart';
 import 'package:provider/provider.dart';
 import 'package:fyi/modals/user.dart';
@@ -11,6 +10,8 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  // using stream provider to authenticate user
+
   @override
   Widget build(BuildContext context) {
     return StreamProvider<User>.value(
@@ -22,3 +23,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// redirects to Welcome page

@@ -23,3 +23,5 @@ class _AuthenticateState extends State<Authenticate> {
     }
   }
 }
+
+// toggles b/w the two pages

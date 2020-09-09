@@ -3,9 +3,18 @@ import 'package:fyi/auth/authPackage.dart';
 import 'package:fyi/shared/laoding.dart';
 import 'package:fyi/shared/funtions.dart';
 
+// constant files used
+
 const double sizedBoxHeight = 10;
+const int _color1 = 0xff7874FD;
+const int _color2 = 0xffB225EE;
+const String _logo = "assets/images/dummy.png";
+const String _firstText = "Welcome To FYI";
+const String _lastText = 'Not Registered Yet! Sign Up';
 
 class SignIn extends StatefulWidget {
+  // toggle view
+
   final Function toggleView;
   SignIn({this.toggleView});
 
@@ -13,6 +22,7 @@ class SignIn extends StatefulWidget {
   _SignInState createState() => _SignInState();
 }
 
+//authentication implementation
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
@@ -25,31 +35,34 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    //based on state of loading context will build up
+
     return loading
         ? Loading()
         : Scaffold(
-            //backgroundColor: Colors.blue[100],
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0.0,
-              title: Text(
-                '',
-                style: TextStyle(color: Colors.black),
-              ),
               leading: Icon(null),
             ),
             extendBodyBehindAppBar: true,
+
+            //single scroll view implementation
+
             body: SingleChildScrollView(
               child: Column(
                 children: [
                   Container(
+                    // size constarints of scroll view
+                    // 990 is the lastes device support size
+
                     width: MediaQuery.of(context).size.width,
                     height: 990,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          colors: [Color(0xff7874FD), Color(0xffB225EE)]),
+                          colors: [Color(_color1), Color(_color2)]),
                     ),
                     child: Column(
                       children: <Widget>[
@@ -61,10 +74,13 @@ class _SignInState extends State<SignIn> {
                                 child: Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(28, 0, 0, 0),
+
+                                  //hero animation in progress
+
                                   child: Hero(
                                     tag: "logo",
                                     child: Image.asset(
-                                      "assets/images/dummy.png",
+                                      _logo,
                                       width: 200,
                                     ),
                                   ),
@@ -76,7 +92,7 @@ class _SignInState extends State<SignIn> {
                         SizedBox(
                           height: sizedBoxHeight,
                         ),
-                        Text('WELCOME TO FYI'),
+                        Text(_firstText),
                         Container(
                           padding: EdgeInsets.symmetric(
                               vertical: 50.0, horizontal: 50.0),
@@ -84,7 +100,8 @@ class _SignInState extends State<SignIn> {
                             key: _formKey,
                             child: Column(
                               children: <Widget>[
-                                //SizedBox(height: 10.0),
+                                // input form field
+
                                 TextFormField(
                                   decoration: textInputDecoration.copyWith(
                                       hintText: 'email'),
@@ -117,6 +134,9 @@ class _SignInState extends State<SignIn> {
                                         borderRadius:
                                             BorderRadius.circular(10)),
                                     elevation: 5.0,
+
+                                    // using firebase to sign up
+
                                     onPressed: () async {
                                       if (_formKey.currentState.validate()) {
                                         setState(() => loading = true);
@@ -139,7 +159,7 @@ class _SignInState extends State<SignIn> {
                                       color: Colors.red, fontSize: 14.0),
                                 ),
                                 FlatButton(
-                                  child: Text('Not Registered Yet! Sign Up'),
+                                  child: Text(_lastText),
                                   color: Colors.transparent,
                                   onPressed: () => widget.toggleView(),
                                 ),
@@ -156,3 +176,5 @@ class _SignInState extends State<SignIn> {
           );
   }
 }
+
+// redirects you to home page

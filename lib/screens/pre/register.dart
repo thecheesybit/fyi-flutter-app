@@ -3,6 +3,16 @@ import 'package:fyi/shared/funtions.dart';
 import 'package:fyi/shared/laoding.dart';
 import 'package:fyi/auth/authPackage.dart';
 
+// constant files used
+
+const double sizedBoxHeight = 10;
+const int _color1 = 0xff7874FD;
+const int _color2 = 0xffB225EE;
+const String _logo = "assets/images/dummy.png";
+const String _firstText = "Welcome To FYI";
+const String _lastText = 'Already a User? Sign In';
+
+// toggle view
 class Register extends StatefulWidget {
   final Function toggleView;
   Register({this.toggleView});
@@ -11,6 +21,7 @@ class Register extends StatefulWidget {
   _RegisterState createState() => _RegisterState();
 }
 
+//authentication implementation
 class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
@@ -24,30 +35,35 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return loading
+
+        //based on state of loading context will build up
+
         ? Loading()
         : Scaffold(
             backgroundColor: Colors.brown[100],
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0.0,
-              title: Text(
-                '',
-                style: TextStyle(color: Colors.black),
-              ),
               leading: Icon(null),
             ),
             extendBodyBehindAppBar: true,
+
+            //single scroll view implementation
+
             body: SingleChildScrollView(
               child: Column(
                 children: [
                   Container(
+                    // size constarints of scroll view
+                    // 990 is the lastes device support size
+
                     width: MediaQuery.of(context).size.width,
                     height: 990,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          colors: [Color(0xff7874FD), Color(0xffB225EE)]),
+                          colors: [Color(_color1), Color(_color2)]),
                     ),
                     child: Column(
                       children: <Widget>[
@@ -59,10 +75,13 @@ class _RegisterState extends State<Register> {
                                 child: Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(28, 0, 0, 0),
+
+                                  // hero animation in progress
+
                                   child: Hero(
                                     tag: "logo",
                                     child: Image.asset(
-                                      "assets/images/dummy.png",
+                                      _logo,
                                       width: 200,
                                     ),
                                   ),
@@ -72,9 +91,9 @@ class _RegisterState extends State<Register> {
                           ),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: sizedBoxHeight,
                         ),
-                        Text('WELCOME TO FYI'),
+                        Text(_firstText),
                         Container(
                           padding: EdgeInsets.symmetric(
                               vertical: 50.0, horizontal: 50.0),
@@ -82,7 +101,6 @@ class _RegisterState extends State<Register> {
                             key: _formKey,
                             child: Column(
                               children: <Widget>[
-                                //SizedBox(height: 10.0),
                                 TextFormField(
                                   decoration: textInputDecoration.copyWith(
                                       hintText: 'email'),
@@ -92,7 +110,9 @@ class _RegisterState extends State<Register> {
                                     setState(() => email = val);
                                   },
                                 ),
-                                SizedBox(height: 20.0),
+                                SizedBox(height: sizedBoxHeight * 2),
+
+                                //input form field
                                 TextFormField(
                                   decoration: textInputDecoration.copyWith(
                                       hintText: 'password'),
@@ -104,7 +124,7 @@ class _RegisterState extends State<Register> {
                                     setState(() => password = val);
                                   },
                                 ),
-                                SizedBox(height: 20.0),
+                                SizedBox(height: sizedBoxHeight * 2),
                                 RaisedButton(
                                     color: Colors.pink[400],
                                     child: Text(
@@ -130,14 +150,14 @@ class _RegisterState extends State<Register> {
                                         }
                                       }
                                     }),
-                                SizedBox(height: 12.0),
+                                SizedBox(height: sizedBoxHeight * 1.2),
                                 Text(
                                   error,
                                   style: TextStyle(
                                       color: Colors.red, fontSize: 14.0),
                                 ),
                                 FlatButton(
-                                  child: Text('Already a User ? Sign In'),
+                                  child: Text(_lastText),
                                   //elevation: 0,
                                   color: Colors.transparent,
                                   onPressed: () => widget.toggleView(),
@@ -155,3 +175,5 @@ class _RegisterState extends State<Register> {
           );
   }
 }
+
+//redirects you to home page
