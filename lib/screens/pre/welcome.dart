@@ -31,7 +31,7 @@ class WelcomePage extends StatelessWidget {
               // 990 is max for latest devices
 
               width: MediaQuery.of(context).size.width,
-              height: 990,
+              height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topCenter, end: Alignment.bottomCenter,
@@ -41,75 +41,52 @@ class WelcomePage extends StatelessWidget {
                     colors: [Color(_color1), Color(_color2)]),
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Center(
-                    //safe area implementation and silver app bar can also be used
-
-                    child: SafeArea(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                        child: Container(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-
-                            //hero animation used on the logo part
-
-                            child: Hero(
-                              tag: "logo",
-                              child: Image.asset(
-                                _logo,
-                                width: 350,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                  Hero(
+                    tag: "logo",
+                    child: Image.asset(
+                      _logo,
+                      width: 350,
                     ),
                   ),
-                  Text(title),
-                  SizedBox(
-                    height: sizedBoxHeight * 30,
-                  ),
-                  SizedBox(
-                    height: 40,
-                    width: 150,
-                    child: RaisedButton(
-                        color: Colors.pink[400],
-                        elevation: 5.0,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Text(
-                          button,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        onPressed: () {
-                          //pusing using pageroute context
-                          //hera animation time controller methode implemenation
-                          //ezpz
+                  RaisedButton(
+                      color: Colors.pink[400],
+                      elevation: 5.0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Text(
+                        button,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        //pusing using pageroute context
+                        //hera animation time controller methode implemenation
+                        //ezpz
 
-                          Navigator.push(
-                            context,
-                            PageRouteBuilder(
-                              transitionDuration:
-                                  Duration(milliseconds: animationDuration),
-                              pageBuilder: (_, __, ___) => Wrapper(),
-                              transitionsBuilder: (context, animation,
-                                  secondaryAnimation, child) {
-                                var begin = Offset(0.0, 1.0);
-                                var end = Offset.zero;
-                                var curve = Curves.ease;
-                                var tween = Tween(begin: begin, end: end)
-                                    .chain(CurveTween(curve: curve));
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            transitionDuration:
+                                Duration(milliseconds: animationDuration),
+                            pageBuilder: (_, __, ___) => Wrapper(),
+                            transitionsBuilder: (context, animation,
+                                secondaryAnimation, child) {
+                              var begin = Offset(0.0, 1.0);
+                              var end = Offset.zero;
+                              var curve = Curves.ease;
+                              var tween = Tween(begin: begin, end: end)
+                                  .chain(CurveTween(curve: curve));
 
-                                return SlideTransition(
-                                  position: animation.drive(tween),
-                                  child: child,
-                                );
-                              },
-                            ),
-                          );
-                        }),
-                  ),
+                              return SlideTransition(
+                                position: animation.drive(tween),
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
+                      }),
                 ],
               ),
             ),
