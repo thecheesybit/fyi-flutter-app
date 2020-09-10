@@ -1,4 +1,4 @@
-![fyi](https://github.com/thecheesybit/fyi-flutter-app/blob/master/assets/images/Screenshot_20200908-164130.jpg)
+![fyi](https://github.com/thecheesybit/fyi-flutter-app/blob/master/assets/images/logo.png)
 
 # fyi
 
